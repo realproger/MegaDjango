@@ -1,18 +1,8 @@
 from django.db import models
 from ckeditor.fields import RichTextField
+from users.models import CustomUser
 
 
-class User(models.Model):
-    name = models.CharField('Имя', max_length=100)
-    phone_number = models.CharField('Номер телефона', max_length=12)
-    
-    class Meta:
-        verbose_name = "Пользователь"
-        verbose_name_plural = "Пользователи"
-        
-    def __str__(self):
-        return self.name
-    
     
 class Category(models.Model):
     name = models.CharField("Название категории", max_length=100)
@@ -42,7 +32,7 @@ class SubCategory(models.Model):
     
     
 class Item(models.Model):
-    user = models.ManyToManyField(User, related_name="Items")
+    user = models.ManyToManyField(CustomUser, related_name="Items")
     sub_category = models.ForeignKey(SubCategory, on_delete=models.CASCADE, related_name='items', null=True)
     image = models.ImageField(verbose_name="Главная картинка товара", upload_to="items/img_box")
     title = models.CharField(verbose_name="Заголовок товара", max_length=255)
@@ -71,3 +61,8 @@ class Characteristic(models.Model):
         
     def __str__(self):
         return self.item.title
+
+
+class Cart(models.Model):
+    item = models.ForeignKey("Item", on_delete=models.SET_NULL, related_name="cart")
+    user = models.OneToOneField()
