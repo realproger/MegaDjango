@@ -1,0 +1,32 @@
+{% load static %}
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Softech</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <h1>Магазин электроники Softech</h1>
+    <div class="item_c">
+        {%if items%}
+            {% for item in items %}
+                {{item.title}}
+                {{item.price}}
+                {{item.description}}
+            {% endfor %}
+        {%endif%}
+    </div>
+
+        {% if categories %}
+        <h2>
+            Категории
+            {% for category in categories %}
+            <ul>{{category.name}}</ul>
+            {% endfor %}
+        </h2>
+        {% endif %}
+</body>
+
+</html>

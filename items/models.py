@@ -1,6 +1,6 @@
 from django.db import models
 from ckeditor.fields import RichTextField
-from users.models import CustomUser
+
 
 
     
@@ -32,7 +32,6 @@ class SubCategory(models.Model):
     
     
 class Item(models.Model):
-    user = models.ManyToManyField(CustomUser, related_name="Items")
     sub_category = models.ForeignKey(SubCategory, on_delete=models.CASCADE, related_name='items', null=True)
     image = models.ImageField(verbose_name="Главная картинка товара", upload_to="items/img_box")
     title = models.CharField(verbose_name="Заголовок товара", max_length=255)
@@ -64,5 +63,20 @@ class Characteristic(models.Model):
 
 
 class Cart(models.Model):
-    item = models.ForeignKey("Item", on_delete=models.SET_NULL, related_name="cart")
-    user = models.OneToOneField()
+    user = models.OneToOneField("users.CustomUser", on_delete=models.CASCADE, related_name="cart")
+    
+    class Meta:
+        verbose_name = "Корзина"
+        verbose_name_plural = "Корзины"
+        
+    def __str__(self):
+        return self.user.first_name
+
+class CartItem(models.Model):
+    item = models.ForeignKey(Item, on_delete=models.CASCADE, related_name="cart_item")
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE, related_name="cart_item")
+    amount = models.PositiveIntegerField("Колличество", default=1)
+    
+    class Meta:
+        unique_together = ('cart', 'item')
+        
