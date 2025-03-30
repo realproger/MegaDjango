@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
 from ckeditor.fields import RichTextField
-
+from solo.models import SingletonModel
 class Footer(models.Model):
     name = models.CharField("Название кнопки", max_length=50)
     description = RichTextField("Описание", null=True, blank=True)
@@ -23,6 +23,19 @@ class Footer(models.Model):
             self.slug = slugify(self.name)
         super(Footer, self).save(*args, **kwargs)
 
+class Contacts(SingletonModel):
+    company_name = models.CharField('Название компании', max_length=100, blank=True, null=True)
+    address = models.TextField('Адрес', blank=True, null=True)
+    phone = models.CharField('Телефон', max_length=20, blank=True, null=True)
+    email = models.EmailField('Email', blank=True, null=True)
+    working_hours = models.TextField('Режим работы', blank=True, null=True)
+    
+    def __str__(self): 
+        return 'Контакты сайта'
+    
+    class Meta: 
+        verbose_name = 'Контакты сайта' 
+        verbose_name_plural = 'Контакты сайта'
 
 
 

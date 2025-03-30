@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     
     'adminsortable2',
     'ckeditor',
+    'solo',
     # APPS
     'items',
     'common',

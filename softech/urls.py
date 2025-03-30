@@ -17,10 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from items.views import get_category
+from common.views import contacts_view
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", get_category, name=""),
+    path("", contacts_view, name="")
 ]
 # urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 
