@@ -37,10 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+    'modeltranslation',
     'adminsortable2',
     'ckeditor',
     'solo',
+    
     # APPS
     'items',
     'common',
@@ -110,8 +111,19 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
-
+LANGUAGES = (
+    ('en', 'English'),
+    ('ru', 'Русский'),
+)
 LANGUAGE_CODE = 'en-us'
+MODELTRANSLATION_DISABLE_PANEL = False
+
+# Автоперевод пустых полей
+MODELTRANSLATION_AUTO_POPULATE = True
+
+# Язык по умолчанию для автоперевода
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
+
 
 TIME_ZONE = 'UTC'
 

@@ -52,7 +52,7 @@ class Item(models.Model):
 
 class Characteristic(models.Model):
     item = models.OneToOneField(Item, on_delete=models.CASCADE, related_name='characteristic')
-    text = RichTextField("Текст характеристики")
+    text = models.TextField()
     
     class Meta:
         verbose_name = "Характеристика"
