@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.text import slugify
 from ckeditor.fields import RichTextField
 from solo.models import SingletonModel
+
 class Footer(models.Model):
     name = models.CharField("Название кнопки", max_length=50)
     description = RichTextField("Описание", null=True, blank=True)

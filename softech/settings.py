@@ -31,13 +31,14 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'modeltranslation',
+    
     'adminsortable2',
     'ckeditor',
     'solo',
@@ -116,10 +117,6 @@ LANGUAGES = (
     ('ru', 'Русский'),
 )
 LANGUAGE_CODE = 'en-us'
-MODELTRANSLATION_DISABLE_PANEL = False
-
-# Автоперевод пустых полей
-MODELTRANSLATION_AUTO_POPULATE = True
 
 # Язык по умолчанию для автоперевода
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
