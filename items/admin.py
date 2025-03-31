@@ -28,7 +28,6 @@ class CharacteristicInline(admin.TabularInline):
     model = Characteristic
 
 
-
 @admin.register(CartItem)
 class CartItemInline(admin.TabularInline):
     model = CartItem

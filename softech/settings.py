@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'modeltranslation',
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -48,7 +49,6 @@ INSTALLED_APPS = [
     'common',
     'users',
 ]
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -112,14 +112,12 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
+gettext = lambda s: s
 LANGUAGES = (
-    ('en', 'English'),
-    ('ru', 'Русский'),
+    ('ru', gettext('Russian')),
+    ('en', gettext('English')),
 )
-LANGUAGE_CODE = 'en-us'
-
-# Язык по умолчанию для автоперевода
-MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'ru'
 
 
 TIME_ZONE = 'UTC'
