@@ -23,12 +23,12 @@ class ItemAdmin(SortableAdminMixin, TabbedTranslationAdmin):
     pass
 
 
-@admin.register(Characteristic)
+# @admin.register(Characteristic)
 class CharacteristicInline(admin.TabularInline):
     model = Characteristic
 
 
-@admin.register(CartItem)
+# @admin.register(CartItem)
 class CartItemInline(admin.TabularInline):
     model = CartItem
     extra = 0
